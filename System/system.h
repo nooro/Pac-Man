@@ -2,8 +2,11 @@
 #define SYSTEM_H_INCLUDED
 
 #include <SDL.h>
+
 #include <iostream>
 using namespace std;
+
+#include "error_manager.h"
 
 class System
 {

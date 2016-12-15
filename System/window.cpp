@@ -6,29 +6,31 @@ int System::Window::width;
 
 bool System::Window::Init()
 {
-    System::Window = SDL_CreateWindow(  "PacMan",
+    System::Window = SDL_CreateWindow(  "Pac-Man",
                                         SDL_WINDOWPOS_UNDEFINED,
                                         SDL_WINDOWPOS_UNDEFINED,
                                         0,
                                         0,
-                                        SDL_WINDOW_SHOWN | SDL_WINDOW_FULLSCREEN_DESKTOP );
+                                        SDL_WINDOW_SHOWN | SDL_WINDOW_FULLSCREEN_DESKTOP);
 
     if(System::Window == NULL)
     {
-        ///error
+        Error::New(Error::Type::SDL, "Can not create the window");
         return false;
     }
 
-    SDL_DisplayMode current_display;
-    if( SDL_GetCurrentDisplayMode(0, &current_display) != 0)
+    SDL_DisplayMode display_variables;
+    if( SDL_GetCurrentDisplayMode(0, &display_variables) != 0)
     {
-        ///error
+        Error::New(Error::Type::SDL, "Can not get the display's variables");
         return false;
     }
-    System::Window::width = current_display.w;
-    System::Window::height = current_display.h;
 
-    delete(&current_display);
+    System::Window::width = display_variables.w;
+    System::Window::height = display_variables.h;
+
+    delete(&display_variables);
+
     return true;
 }
 
