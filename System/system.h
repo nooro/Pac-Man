@@ -35,6 +35,7 @@ class System
 
     private:
         static bool InitSDL();
+        static bool CreateTheRenderer();
 };
 
 
