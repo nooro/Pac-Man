@@ -3,6 +3,8 @@
 
 #include "../System/system.h"
 
+SDL_Texture *CreateTexture(string texture_path);
+
 class GUI_Base
 {
     public:
@@ -19,11 +21,22 @@ class GUI_Base
         int GetWidth();
         int GetHeight();
 
+        void SetTexture(SDL_Texture *texture);
+        void SetTexture(string texture_path);
+
         void Render();
 
     private:
         SDL_Rect rect;
+        SDL_Rect *clip_rect;
+
         SDL_Texture *texture;
+        enum TextureType
+        {
+            loaded,
+            linked
+        };
+        TextureType texture_type;
 };
 
 #endif // GUI_BASE_H_INCLUDED

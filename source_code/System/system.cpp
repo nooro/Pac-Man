@@ -9,8 +9,10 @@ bool System::Init()
 
 void System::Free()
 {
-    SDL_DestroyWindow(System::Window);
     SDL_DestroyRenderer(System::Renderer);
+    SDL_DestroyWindow(System::Window);
+
+    IMG_Quit();
     SDL_Quit();
 }
 
@@ -21,6 +23,15 @@ bool System::InitSDL()
         Error::New(Error::Type::SDL, "Can not initialize SDL");
         return false;
     }
+
+    int image_flags = IMG_INIT_JPG | IMG_INIT_PNG;
+    int is_initted = IMG_Init( image_flags );
+    if( ( is_initted & image_flags ) != image_flags)
+    {
+        Error::New(Error::Type::IMG, "Can not initialize SDL_image");
+        return false;
+    }
+
     return true;
 }
 

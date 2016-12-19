@@ -3,18 +3,34 @@
 GUI_Base::GUI_Base()
 {
     this->rect = { 0, 0, 0, 0 };
+    this->clip_rect = NULL;
     this->texture = NULL;
+    this->texture_type = TextureType::loaded;
 }
 
 GUI_Base::~GUI_Base()
 {
     delete(&this->rect);
-    SDL_DestroyTexture(this->texture);
+
+    if( this->texture_type == TextureType::loaded ) { SDL_DestroyTexture(this->texture); }
+    else { this->texture = NULL; }
+}
+
+void GUI_Base::SetTexture(SDL_Texture *texture)
+{
+    this->texture = texture;
+    this->texture_type = TextureType::linked;
+}
+
+void GUI_Base::SetTexture(string texture_path)
+{
+    this->texture = CreateTexture(texture_path);
+    this->texture_type = TextureType::loaded;
 }
 
 void GUI_Base::Render()
 {
-    SDL_RenderCopy(System::Renderer, this->texture, NULL, &this->rect);
+    SDL_RenderCopy(System::Renderer, this->texture, this->clip_rect, &this->rect);
 }
 
 void GUI_Base::SetX(int x)          { this->rect.x = x; }

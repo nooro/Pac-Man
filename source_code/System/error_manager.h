@@ -2,6 +2,7 @@
 #define ERROR_MANAGER_H_INCLUDED
 
 #include <SDL.h>
+#include <SDL_image.h>
 #include <string>
 
 class Error
@@ -9,7 +10,8 @@ class Error
     public:
         enum Type
         {
-            SDL
+            SDL,
+            IMG
         };
 
         static void New(Error::Type type, std::string message);
