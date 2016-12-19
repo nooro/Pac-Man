@@ -1,6 +1,1 @@
-<style>
-  body
-  {
-    background-color: pink;
-  }
-</style>
+My diploma thesis at TUES/ELSYS - cloning of the arcade game Pac-Man
