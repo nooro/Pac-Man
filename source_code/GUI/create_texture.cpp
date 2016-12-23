@@ -1,5 +1,8 @@
 #include "gui_base.h"
 
+int last_created_texture_width;
+int last_created_texture_height;
+
 SDL_Texture *CreateTexture(string texture_path)
 {
     SDL_Surface *surface = NULL;
@@ -20,7 +23,13 @@ SDL_Texture *CreateTexture(string texture_path)
         return NULL;
     }
 
+    last_created_texture_height = surface->h;
+    last_created_texture_width = surface->w;
+
     SDL_FreeSurface(surface);
 
     return texture;
 }
+
+int get_last_created_texture_width() { return last_created_texture_width; }
+int get_last_created_texture_height() { return last_created_texture_height; }
