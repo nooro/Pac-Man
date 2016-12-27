@@ -13,32 +13,27 @@ class GO_Base
         GO_Base();
         ~GO_Base();
 
-        void SetX(int x);           void SetFrameX(int x);
-        void SetY(int y);           void SetFrameY(int y);
-        void SetWidth(int width);   void SetFrameWidth(int width);
-        void SetHeight(int height); void SetFrameHeight(int height);
+        void SetX(int x);
+        void SetY(int y);
+        void SetWidth(int width);
+        void SetHeight(int height);
 
-        int GetX();         int GetFrameX();
-        int GetY();         int GetFrameY();
-        int GetWidth();     int GetFrameWidth();
-        int GetHeight();    int GetFrameHeight();
+        int GetX();
+        int GetY();
+        int GetWidth();
+        int GetHeight();
 
         void SetTexture(SDL_Texture *texture);
         void SetTexture(string texture_path);
 
         void Render();
-        void RenderFrame();
-
-    private:
-        SDL_Rect rect;
-        SDL_Rect clip_rect;
 
         SDL_Texture *texture;
-        enum TextureType
-        {
-            loaded,
-            linked
-        };
+        SDL_Rect rect;
+
+    private:
+
+        enum TextureType { loaded, linked };
         TextureType texture_type;
 };
 
