@@ -7,11 +7,11 @@ SDL_Texture *CreateTexture(string texture_path);
 int get_last_created_texture_width();
 int get_last_created_texture_height();
 
-class GUI_Base
+class GO_Base
 {
     public:
-        GUI_Base();
-        ~GUI_Base();
+        GO_Base();
+        ~GO_Base();
 
         void SetX(int x);           void SetFrameX(int x);
         void SetY(int y);           void SetFrameY(int y);

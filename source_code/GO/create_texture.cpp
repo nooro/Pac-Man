@@ -1,4 +1,4 @@
-#include "gui_base.h"
+#include "go_base.h"
 
 int last_created_texture_width;
 int last_created_texture_height;
