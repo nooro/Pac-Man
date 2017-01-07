@@ -8,6 +8,7 @@
 using namespace std;
 
 #include "error_manager.h"
+#include "resources_paths.h"
 
 class System
 {
