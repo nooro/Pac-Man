@@ -13,6 +13,9 @@ class Image : public GO_Base
         void Render();
 
         void Clip(int x, int y, int w, int h);
+        void Rotate( double angle );
+        void FlipHorizontal();
+        void FlipVertical();
 
         void SetClipX(int x);
         void SetClipY(int y);
@@ -25,6 +28,13 @@ class Image : public GO_Base
         int GetClipHeight();
 
     private:
+        void Init();
+
+        SDL_RendererFlip flip_type;
+        SDL_RendererFlip rotation;
+
+        double rotation_angle;
+
         SDL_Rect clip_rect;
         bool is_clipped;
 };
