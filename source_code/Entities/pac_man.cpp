@@ -71,9 +71,12 @@ void PacMan::Move()
         { PacMan::rect.y += PacMan::movement_speed; }
 }
 
-void PacMan::ChangeWalkDirection( PacMan::Direction direction )
+void PacMan::ChangeWalkDirection( Direction direction )
 {
-    PacMan::walk_direction = direction;
+    if( PacMan::walk_direction != direction )
+    {
+        PacMan::walk_direction = direction;
+    }
 }
 
 void PacMan::Render()
