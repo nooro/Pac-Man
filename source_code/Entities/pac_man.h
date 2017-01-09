@@ -4,16 +4,27 @@
 #include "../System/system.h"
 #include "../GO/go.h"
 
+
 class PacMan
 {
     public:
         static bool Init();
         static void Render();
 
+        static void Update();
+
+        enum Direction { Up, Right, Down, Left };
+        static Direction walk_direction;
+        static void ChangeWalkDirection(PacMan::Direction direction);
+
     private:
+        static void Move();
         static SDL_Rect rect;
+
         static bool is_alive, is_walking;
         static int lives;
+        static int movement_speed;
+
         static Image idle_image;
         static Animation walk_animation;
         static Animation die_animation;
