@@ -47,7 +47,21 @@ void Image::Render()
     }
     else
     {
-       SDL_RenderCopy(System::Renderer, this->texture, &this->clip_rect, &this->rect);
+        if( this->flip_type == SDL_FLIP_NONE && ( this->rotation_angle == 0 || this->rotation_angle == 360 ) )
+        {
+            SDL_RenderCopy(System::Renderer, this->texture, &this->clip_rect, &this->rect);
+        }
+        else
+        {
+            if( this->flip_type != SDL_FLIP_NONE )
+            {
+                SDL_RenderCopyEx(System::Renderer, this->texture, &this->clip_rect, &this->rect, 180, NULL, this->flip_type);
+            }
+            else
+            {
+                SDL_RenderCopyEx(System::Renderer, this->texture, &this->clip_rect, &this->rect, this->rotation_angle, NULL, this->rotation);
+            }
+        }
     }
 }
 
