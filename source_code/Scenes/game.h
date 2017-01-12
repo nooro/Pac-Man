@@ -11,7 +11,12 @@ class GameScene
         static void Play();
 
     private:
+        static void GetPlayerInput();
+        static void Render();
+
         static bool is_active;
+
+        static SDL_Rect game_panel;
 };
 
 #endif // GAME_H_INCLUDED
