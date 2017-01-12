@@ -1,8 +1,8 @@
 #ifndef GAME_H_INCLUDED
 #define GAME_H_INCLUDED
 
-#include "../System/system.h"
-#include "../Entities/pac_man.h"
+#include "../../System/system.h"
+#include "../../Entities/pac_man.h"
 
 class GameScene
 {
