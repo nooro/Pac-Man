@@ -12,6 +12,7 @@ class Animation : public Image
         void Create(string path, int frames, double fps, AnimationType type);
 
         void PlayNextFrame();
+        void Reset();
         bool IsFinished();
 
     private:

@@ -74,3 +74,10 @@ void Animation::ClipCurrentFrame()
 }
 
 bool Animation::IsFinished() { return this->is_finished; }
+
+void Animation::Reset()
+{
+    this->is_finished = false;
+    this->current_frame = 1;
+    this->SetClipX(0);
+}
