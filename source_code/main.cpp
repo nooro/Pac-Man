@@ -1,5 +1,5 @@
 #include "System/system.h"
-#include "Scenes/game.h"
+#include "Scenes/Game/game.h"
 
 int main(int argc, char ** argv)
 {
