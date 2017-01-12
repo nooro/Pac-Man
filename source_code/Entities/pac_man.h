@@ -13,21 +13,28 @@ class PacMan
 
         static void Update();
 
-        enum Direction { Up, Right, Down, Left };
+        enum Direction { Right = 0, Left, Up = 90, Down = 270 };
         static Direction walk_direction;
         static void ChangeWalkDirection(PacMan::Direction direction);
 
+        static bool IsWalking();
+        static bool IsAlive();
+
+        static void Die();
+
     private:
         static void Move();
+
         static SDL_Rect rect;
 
-        static bool is_alive, is_walking;
         static int lives;
         static int movement_speed;
 
+        static bool is_alive, is_walking;
+
         static Image idle_image;
-        static Animation walk_animation;
         static Animation die_animation;
+        static Animation walk_animation;
 };
 
 #endif // PAC_MAN_H_INCLUDED
