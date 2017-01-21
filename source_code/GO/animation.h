@@ -17,8 +17,8 @@ class Animation : public Image
 
     private:
         double fps;
-        int frames, current_frame, middle_frame;
-        int time_for_frame, last_time_updated;
+        unsigned int frames, current_frame, middle_frame;
+        unsigned int time_for_frame, last_time_updated;
         int frame_width;
         bool is_finished;
         AnimationType type;

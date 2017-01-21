@@ -1,23 +1,24 @@
 #include "game.h"
 
 bool GameScene::is_active;
-SDL_Rect GameScene::game_panel;
+
+Map GameScene::current_map;
 
 bool GameScene::Init()
 {
+    GamePanel::Init();
+
     if( !PacMan::Init() )
     {
         return false;
     }
 
-    GameScene::is_active = false;
+    if( !GameScene::current_map.Load("Resources/Maps/test.map") )
+    {
+        return false;
+    }
 
-    //Initialize the resolution for the game panel (5:4)
-    GameScene::game_panel.h = System::Window::GetHeight();
-    GameScene::game_panel.w = System::Window::GetHeight() + ( System::Window::GetHeight() / 4 );
-    //Center the game panel
-    GameScene::game_panel.x = ( System::Window::GetWidth() / 2 ) - ( GameScene::game_panel.w / 2 ) ;
-    GameScene::game_panel.y = 0;
+    GameScene::is_active = false;
 
     return true;
 }
@@ -30,7 +31,9 @@ void GameScene::Play()
     while( GameScene::is_active )
     {
         GameScene::GetPlayerInput();
+
         PacMan::Update();
+        GameScene::CheckForCollision();
 
         GameScene::Render();
     }
@@ -39,6 +42,7 @@ void GameScene::Play()
 void GameScene::Render()
 {
     System::Window::Clear();
+    GameScene::current_map.Render();
     PacMan::Render();
     System::Window::Update();
 }
@@ -67,4 +71,80 @@ void GameScene::GetPlayerInput()
     {
         PacMan::ChangeWalkDirection( PacMan::Direction::Down );
     }
+}
+
+void GameScene::CheckForCollision()
+{
+    PacMan::StartWalking();
+    if( PacMan::walk_direction == PacMan::Direction::Right )
+    {
+        //Check for collision with the right wall of the game panel
+        if( PacMan::GetX() + PacMan::GetWidth() >= GamePanel::GetX() + GamePanel::GetWidth() )
+        {
+            PacMan::StopWalking();
+        }
+
+        //Check for collision with wall block
+//        for(int i = 0; i < WallsManager::NumberOfWalls(); i++ )
+//        {
+//            if( PacMan::GetX() + PacMan::GetWidth() >= WallsManager::Get(i).x )
+//            {
+//                if( PacMan::GetY() <= WallsManager::Get(i).y + WallsManager::Get(i).h )
+//                {
+//                    if( PacMan::GetY() + PacMan::GetHeight() >= WallsManager::Get(i).y )
+//                    {
+//                        PacMan::StopWalking();
+//                    }
+//                }
+//            }
+//        }
+    }
+    else if( PacMan::walk_direction == PacMan::Direction::Left )
+    {
+        //Check for collision with the left wall of the game panel
+        if( PacMan::GetX() <= GamePanel::GetX() )
+        {
+            PacMan::StopWalking();
+        }
+//
+//        //Check for collision with wall block
+//        for(int i = 0; i < WallsManager::NumberOfWalls(); i++ )
+//        {
+//            if( PacMan::GetX() <= WallsManager::Get(i).x + WallsManager::Get(i).w )
+//            {
+//                if( PacMan::GetY() >= WallsManager::Get(i).y )
+//                {
+//                    if( PacMan::GetY() + PacMan::GetHeight() <= WallsManager::Get(i).y + WallsManager::Get(i).h )
+//                    {
+//                        PacMan::StopWalking();
+//                    }
+//                }
+//            }
+//        }
+    }
+//    else if( PacMan::walk_direction == PacMan::Direction::Up )
+//    {
+//        //Check for collision with the upper wall of the game panel
+//        if( PacMan::GetY() <= GamePanel::GetY() )
+//        {
+//            PacMan::StopWalking();
+//        }
+//
+//        //Check for collision with wall block
+//        for(int i = 0; i < WallsManager::NumberOfWalls(); i++ )
+//        {
+//            if( PacMan::GetY() == WallsManager::Get(i).y + WallsManager::Get(i).h )
+//            {
+//                PacMan::StopWalking();
+//            }
+//        }
+//    }
+//    else if( PacMan::walk_direction == PacMan::Direction::Down )
+//    {
+//        //Check for collision with the down wall of the game panel
+//        if( PacMan::GetY() + PacMan::GetHeight() >= GamePanel::GetY() + GamePanel::GetHeight() )
+//        {
+//            PacMan::StopWalking();
+//        }
+//    }
 }

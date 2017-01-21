@@ -4,8 +4,15 @@ const SDL_MessageBoxButtonData Error::buttons[1] = { { SDL_MESSAGEBOX_BUTTON_RET
 
 void Error::New(Error::Type type, std::string message)
 {
-    if(type == Error::Type::SDL) { message += "\n  -" + (std::string)SDL_GetError(); }
-    else if(type == Error::Type::IMG) { message += "\n  -" + (std::string)IMG_GetError(); }
+    if( type == Error::Type::SDL )
+    {
+        message += "\n  -" + (std::string)SDL_GetError();
+    }
+
+    else if( type == Error::Type::IMG )
+    {
+        message += "\n  -" + (std::string)IMG_GetError();
+    }
 
     const SDL_MessageBoxData message_box_data = { SDL_MESSAGEBOX_ERROR,
                                                   NULL,

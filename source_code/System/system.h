@@ -7,6 +7,8 @@
 #include <iostream>
 using namespace std;
 
+#include "genereal.h"
+
 #include "error_manager.h"
 #include "resources_paths.h"
 

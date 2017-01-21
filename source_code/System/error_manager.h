@@ -11,7 +11,8 @@ class Error
         enum Type
         {
             SDL,
-            IMG
+            IMG,
+            Custom
         };
 
         static void New(Error::Type type, std::string message);
