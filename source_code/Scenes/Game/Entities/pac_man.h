@@ -29,6 +29,10 @@ class PacMan
         static int GetWidth();
         static int GetHeight();
 
+        static void SetX(int x);
+        static void SetY(int y);
+        static void SetWidth(int w);
+        static void SetHeight(int h);
     private:
         static void Move();
 

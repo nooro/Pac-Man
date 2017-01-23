@@ -132,3 +132,8 @@ int PacMan::GetX() { return PacMan::rect.x; }
 int PacMan::GetY() { return PacMan::rect.y; }
 int PacMan::GetWidth() { return PacMan::rect.w; }
 int PacMan::GetHeight() { return PacMan::rect.h; }
+
+void PacMan::SetX(int x) { PacMan::rect.x = x; }
+void PacMan::SetY(int y) { PacMan::rect.y = y; }
+void PacMan::SetWidth(int w) { PacMan::rect.w = w; }
+void PacMan::SetHeight(int h) { PacMan::rect.h = h; }
