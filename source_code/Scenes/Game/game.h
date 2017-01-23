@@ -15,7 +15,8 @@ class GameScene
 
     private:
         static void GetPlayerInput();
-        static void CheckForCollision();
+        static void CheckForCollisionWithWall();
+        static void CheckForCollisionWithPoint();
         static void Render();
 
         static bool is_active;

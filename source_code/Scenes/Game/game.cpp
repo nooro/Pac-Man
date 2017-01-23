@@ -33,7 +33,9 @@ void GameScene::Play()
         GameScene::GetPlayerInput();
 
         PacMan::Update();
-        GameScene::CheckForCollision();
+
+        GameScene::CheckForCollisionWithWall();
+        GameScene::CheckForCollisionWithPoint();
 
         GameScene::Render();
     }
