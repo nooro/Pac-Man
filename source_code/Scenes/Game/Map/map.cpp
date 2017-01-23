@@ -61,6 +61,13 @@ bool Map::Load(string file_path)
             line++;
             element = 0;
         }
+        else if(current_element == PACMAN)
+        {
+            PacMan::SetX(GamePanel::GetX() + element * current_wall_rect.w);
+            PacMan::SetY( (line * current_wall_rect.h) + ((current_wall_rect.h - PacMan::GetHeight()) / 2) );
+            element++;
+        }
+
     }
 
     file.close();

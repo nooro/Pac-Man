@@ -8,9 +8,11 @@
 #include "../game_panel.h"
 #include "walls_manager.h"
 #include "points_manager.h"
+#include "../Entities/pac_man.h"
 
 #define WALL '#'
 #define POINT '*'
+#define PACMAN '@'
 
 class Map
 {
