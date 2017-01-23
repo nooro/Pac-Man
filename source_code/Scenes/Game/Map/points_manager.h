@@ -9,9 +9,15 @@ class PointsManager
 {
     public:
         static void SetColor(SDL_Color color);
+
         static void Add(SDL_Rect rect);
+        static void Delete(int index);
+
         static void Render();
         static void Clear();
+
+        static SDL_Rect Get(int index);
+        static int NumberOfPoints();
 
     private:
         static SDL_Texture *texture;

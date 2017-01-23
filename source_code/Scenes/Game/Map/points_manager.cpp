@@ -10,6 +10,11 @@ void PointsManager::Add(SDL_Rect rect)
     PointsManager::points.push_back(rect);
 }
 
+void PointsManager::Delete(int index)
+{
+    PointsManager::points.erase(PointsManager::points.begin() + index);
+}
+
 void PointsManager::SetColor(SDL_Color color)
 {
     PointsManager::texture = CreateTexture(POINT_IMAGE);
@@ -28,3 +33,7 @@ void PointsManager::Render()
         SDL_RenderCopy(System::Renderer, PointsManager::texture, NULL, &PointsManager::points[i]);
     }
 }
+
+SDL_Rect PointsManager::Get(int index) { return PointsManager::points[index]; }
+
+int PointsManager::NumberOfPoints() { return PointsManager::points.size(); }
