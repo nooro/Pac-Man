@@ -14,7 +14,7 @@ PacMan::Direction PacMan::walk_direction;
 
 bool PacMan::Init()
 {
-    PacMan::rect.h = GamePanel::GetHeight() / 35;
+    PacMan::rect.h = GamePanel::GetHeight() / 40;
     PacMan::rect.w = PacMan::rect.h;
     PacMan::rect.x = System::Window::GetWidth() / 2 - PacMan::rect.w;
     PacMan::rect.y = System::Window::GetHeight() / 2 - PacMan::rect.h;

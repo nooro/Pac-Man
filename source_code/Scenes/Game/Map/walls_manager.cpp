@@ -29,7 +29,6 @@ void WallsManager::Render()
     }
 }
 
-
 SDL_Rect WallsManager::Get(int index) { return WallsManager::walls[index]; }
 
 int WallsManager::NumberOfWalls() { return WallsManager::walls.size(); }
