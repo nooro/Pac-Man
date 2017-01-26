@@ -10,7 +10,8 @@ class General
     public:
         static int RandomNumber(int min, int max);
 
-        static SDL_Color Colors[6];
+        static SDL_Color Colors[7];
+
     private:
         static bool random_is_seed;
 };
