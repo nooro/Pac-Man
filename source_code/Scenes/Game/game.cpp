@@ -8,12 +8,7 @@ bool GameScene::Init()
 {
     GamePanel::Init();
 
-    if( !PacMan::Init() )
-    {
-        return false;
-    }
-
-    if( !GameScene::current_map.Load("Resources/Maps/test.map") )
+    if( !PacMan::Init(GamePanel::GetHeight() / 40, GamePanel::GetHeight() / 40) )
     {
         return false;
     }
@@ -25,7 +20,7 @@ bool GameScene::Init()
 
 void GameScene::Play()
 {
-    GameScene::is_active = true;
+    GameScene::is_active = GameScene::current_map.Load("Resources/Maps/test.map");
     PacMan::ChangeWalkDirection(PacMan::Direction::Left);
 
     while( GameScene::is_active )
@@ -34,8 +29,7 @@ void GameScene::Play()
 
         PacMan::Update();
 
-        GameScene::CheckForCollisionWithWall();
-        GameScene::CheckForCollisionWithPoint();
+        GameScene:CheckForCollision();
 
         GameScene::Render();
     }
@@ -50,13 +44,16 @@ void GameScene::Render()
 }
 
 const Uint8 *input = SDL_GetKeyboardState(NULL);
+PacMan::Direction previous_direction;
 void GameScene::GetPlayerInput()
 {
     SDL_PumpEvents();
+    previous_direction = PacMan::walk_direction;
 
     if( input[SDL_SCANCODE_LEFT] )
     {
         PacMan::ChangeWalkDirection( PacMan::Direction::Left );
+
     }
 
     if( input[SDL_SCANCODE_RIGHT] )
@@ -72,5 +69,16 @@ void GameScene::GetPlayerInput()
     if( input[SDL_SCANCODE_DOWN] )
     {
         PacMan::ChangeWalkDirection( PacMan::Direction::Down );
+    }
+}
+
+void GameScene::CheckForCollision()
+{
+    if( !GameScene::CheckForCollisionWithPoint() )
+    {
+        if( !GameScene::CheckForCollisionWithWall() )
+        {
+            GameScene::CheckForCollisionWithBonusPoint();
+        }
     }
 }
