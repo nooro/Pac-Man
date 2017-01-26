@@ -7,6 +7,10 @@ bool Map::Load(string file_path)
 
     PointsManager::Clear();
     PointsManager::SetColor( General::Colors[5] );
+
+    BonusPointsManager::Clear();
+    BonusPointsManager::SetColor( General::Colors[6] );
+
     ifstream file;
     file.open(file_path);
 
@@ -25,10 +29,16 @@ bool Map::Load(string file_path)
     current_wall_rect.y = 0;
 
     SDL_Rect current_point_rect;
-    current_point_rect.h = current_wall_rect.h / 2;
+    current_point_rect.h = current_wall_rect.h / 3;
     current_point_rect.w = current_point_rect.h;
     current_point_rect.x = 0;
     current_point_rect.y = 0;
+
+    SDL_Rect current_bonus_point_rect;
+    current_bonus_point_rect.h = current_wall_rect.h / 1.5;
+    current_bonus_point_rect.w = current_bonus_point_rect.h;
+    current_bonus_point_rect.x = 0;
+    current_bonus_point_rect.y = 0;
 
     int line = 0;
     int element = 0;
@@ -47,16 +57,23 @@ bool Map::Load(string file_path)
         }
         else if(current_element == POINT)
         {
-            current_point_rect.x = ( GamePanel::GetX() + element * current_wall_rect.w ) + ( current_point_rect.w / 2 );
-            current_point_rect.y = ( line * current_wall_rect.h ) + ( current_point_rect.h / 2 );
+            current_point_rect.x = ( GamePanel::GetX() + element * current_wall_rect.w ) + current_point_rect.w;
+            current_point_rect.y = ( line * current_wall_rect.h ) + current_point_rect.h;
             PointsManager::Add(current_point_rect);
             element++;
         }
-        else if(current_element == ' ')
+        else if(current_element == BONUS_POINT)
+        {
+            current_bonus_point_rect.x = ( GamePanel::GetX() + element * current_wall_rect.w ) + ( current_point_rect.w  / 2);
+            current_bonus_point_rect.y = ( line * current_wall_rect.h ) + + ( current_point_rect.w / 2);
+            BonusPointsManager::Add(current_bonus_point_rect);
+            element++;
+        }
+        else if(current_element == EMPTY_SPACE)
         {
             element++;
         }
-        else if(current_element == '\n')
+        else if(current_element == NEW_LINE)
         {
             line++;
             element = 0;
@@ -79,4 +96,5 @@ void Map::Render()
 {
     WallsManager::Render();
     PointsManager::Render();
+    BonusPointsManager::Render();
 }
