@@ -2,14 +2,15 @@
 
 bool General::random_is_seed = false;
 
-SDL_Color General::Colors[6] =
+SDL_Color General::Colors[7] =
 {
     {63, 72, 204, 255},     //BLUE
     {0, 128, 0, 255},       //GREEN
     {255, 128, 0, 255},     //ORANGE
     {64, 0, 64, 255},       //PURPLE
     {155, 0, 0, 255},       //RED
-    {255, 255, 255, 255}    //WHITE
+    {255, 255, 255, 255},   //WHITE
+    {255, 160, 200, 255},   //PINK
 };
 
 
