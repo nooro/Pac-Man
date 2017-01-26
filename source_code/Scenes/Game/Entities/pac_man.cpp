@@ -12,16 +12,14 @@ int PacMan::movement_speed;
 SDL_Rect PacMan::rect;
 PacMan::Direction PacMan::walk_direction;
 
-bool PacMan::Init()
+bool PacMan::Init(int hight, int width)
 {
-    PacMan::rect.h = GamePanel::GetHeight() / 40;
-    PacMan::rect.w = PacMan::rect.h;
-    PacMan::rect.x = System::Window::GetWidth() / 2 - PacMan::rect.w;
-    PacMan::rect.y = System::Window::GetHeight() / 2 - PacMan::rect.h;
-
     PacMan::is_alive = true;
     PacMan::is_walking = true;
     PacMan::lives = 3;
+
+    PacMan::rect.w = width;
+    PacMan::rect.h = hight;
     PacMan::movement_speed = PacMan::rect.w / 6;
 
     PacMan::idle_image.SetTexture( PAC_MAN_IDLE_IMAGE );
@@ -137,3 +135,8 @@ void PacMan::SetX(int x) { PacMan::rect.x = x; }
 void PacMan::SetY(int y) { PacMan::rect.y = y; }
 void PacMan::SetWidth(int w) { PacMan::rect.w = w; }
 void PacMan::SetHeight(int h) { PacMan::rect.h = h; }
+
+void PacMan::SetMovementSpeed(int speed)
+{
+    PacMan::movement_speed = speed;
+}

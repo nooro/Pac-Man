@@ -2,13 +2,12 @@
 #define PAC_MAN_H_INCLUDED
 
 #include "../../../System/system.h"
-#include "../game_panel.h"
 #include "../../../GO/go.h"
 
 class PacMan
 {
     public:
-        static bool Init();
+        static bool Init(int high, int width);
         static void Render();
 
         static void Update();
@@ -33,6 +32,9 @@ class PacMan
         static void SetY(int y);
         static void SetWidth(int w);
         static void SetHeight(int h);
+
+        static void SetMovementSpeed(int speed);
+
     private:
         static void Move();
 
