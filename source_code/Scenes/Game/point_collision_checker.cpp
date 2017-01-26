@@ -91,13 +91,14 @@ bool is_collide_on_down_walking()
     return false;
 }
 
-void GameScene::CheckForCollisionWithPoint()
+bool GameScene::CheckForCollisionWithPoint()
 {
     if( PacMan::walk_direction == PacMan::Direction::Right )
     {
         if( is_collide_on_right_walking() )
         {
             PointsManager::Delete(collider_point_index);
+            return true;
         }
     }
     else if( PacMan::walk_direction == PacMan::Direction::Left )
@@ -105,6 +106,7 @@ void GameScene::CheckForCollisionWithPoint()
         if( is_collide_on_left_walking() )
         {
             PointsManager::Delete(collider_point_index);
+            return true;
         }
     }
     else if( PacMan::walk_direction == PacMan::Direction::Up )
@@ -112,6 +114,7 @@ void GameScene::CheckForCollisionWithPoint()
         if( is_collide_on_up_walking() )
         {
             PointsManager::Delete(collider_point_index);
+            return true;
         }
     }
     else if( PacMan::walk_direction == PacMan::Direction::Down )
@@ -119,6 +122,9 @@ void GameScene::CheckForCollisionWithPoint()
         if( is_collide_on_down_walking() )
         {
             PointsManager::Delete(collider_point_index);
+            return true;
         }
     }
+
+    return false;
 }
