@@ -174,7 +174,6 @@ bool GameScene::CheckForCollisionWithWall()
     {
         if( is_collide_when_right_walking() )
         {
-            PacMan::StopWalking();
             PacMan::SetX(WallsManager::Get(collider_wall_index).x - PacMan::GetWidth() - ((GamePanel::GetHeight() / 30 - PacMan::GetWidth()) / 2));
             return true;
         }
@@ -183,7 +182,6 @@ bool GameScene::CheckForCollisionWithWall()
     {
         if( is_collide_when_left_walking() )
         {
-            PacMan::StopWalking();
             PacMan::SetX(WallsManager::Get(collider_wall_index).x + WallsManager::Get(collider_wall_index).w + ((GamePanel::GetHeight() / 30 - PacMan::GetWidth()) / 2));
             return true;
         }
@@ -192,7 +190,6 @@ bool GameScene::CheckForCollisionWithWall()
     {
         if( is_collide_when_up_walking() )
         {
-            PacMan::StopWalking();
             PacMan::SetY( WallsManager::Get(collider_wall_index).y + WallsManager::Get(collider_wall_index).h + ((GamePanel::GetHeight() / 30 - PacMan::GetWidth()) / 2));
             return true;
         }
@@ -201,7 +198,6 @@ bool GameScene::CheckForCollisionWithWall()
     {
         if( is_collide_when_down_walking() )
         {
-            PacMan::StopWalking();
             PacMan::SetY( WallsManager::Get(collider_wall_index).y - PacMan::GetHeight() - ((GamePanel::GetHeight() / 30 - PacMan::GetWidth()) / 2));
             return true;
         }
