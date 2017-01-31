@@ -140,3 +140,8 @@ void PacMan::SetMovementSpeed(int speed)
 {
     PacMan::movement_speed = speed;
 }
+
+int PacMan::GetMovementSpeed()
+{
+    return PacMan::movement_speed;
+}
