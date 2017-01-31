@@ -53,22 +53,49 @@ void GameScene::GetPlayerInput()
     if( input[SDL_SCANCODE_LEFT] )
     {
         PacMan::ChangeWalkDirection( PacMan::Direction::Left );
-
+        if(previous_direction == PacMan::Direction::Up || previous_direction == PacMan::Direction::Down)
+        {
+            if(CheckForCollisionWithWall())
+            {
+                PacMan::ChangeWalkDirection( previous_direction );
+            }
+        }
     }
 
     if( input[SDL_SCANCODE_RIGHT] )
     {
         PacMan::ChangeWalkDirection( PacMan::Direction::Right );
+        if(previous_direction == PacMan::Direction::Up || previous_direction == PacMan::Direction::Down)
+        {
+            if(CheckForCollisionWithWall())
+            {
+                PacMan::ChangeWalkDirection( previous_direction );
+            }
+        }
     }
 
     if( input[SDL_SCANCODE_UP] )
     {
         PacMan::ChangeWalkDirection( PacMan::Direction::Up );
+        if(previous_direction == PacMan::Direction::Left || previous_direction == PacMan::Direction::Right)
+        {
+            if(CheckForCollisionWithWall())
+            {
+                PacMan::ChangeWalkDirection( previous_direction );
+            }
+        }
     }
 
     if( input[SDL_SCANCODE_DOWN] )
     {
         PacMan::ChangeWalkDirection( PacMan::Direction::Down );
+        if(previous_direction == PacMan::Direction::Left || previous_direction == PacMan::Direction::Right)
+        {
+            if(CheckForCollisionWithWall())
+            {
+                PacMan::ChangeWalkDirection( previous_direction );
+            }
+        }
     }
 }
 
@@ -79,6 +106,10 @@ void GameScene::CheckForCollision()
         if( !GameScene::CheckForCollisionWithWall() )
         {
             GameScene::CheckForCollisionWithBonusPoint();
+        }
+        else
+        {
+            PacMan::StopWalking();
         }
     }
 }
