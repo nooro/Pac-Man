@@ -2,7 +2,9 @@
 #define GAME_H_INCLUDED
 
 #include "../../System/system.h"
+
 #include "Entities/pac_man.h"
+#include "Entities/ghost.h"
 
 #include "game_panel.h"
 #include "Map/map.h"

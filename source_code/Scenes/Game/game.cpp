@@ -3,12 +3,17 @@
 bool GameScene::is_active;
 
 Map GameScene::current_map;
-
+Ghost ghost;
 bool GameScene::Init()
 {
     GamePanel::Init();
 
-    if( !PacMan::Init(GamePanel::GetHeight() / 40, GamePanel::GetHeight() / 40) )
+    if( !PacMan::Init(GamePanel::GetHeight() / 40, GamePanel::GetHeight() / 40))
+    {
+        return false;
+    }
+
+    if( !ghost.Init(GamePanel::GetHeight() / 40, GamePanel::GetHeight() / 40))
     {
         return false;
     }
@@ -29,7 +34,7 @@ void GameScene::Play()
 
         PacMan::Update();
 
-        GameScene:CheckForCollision();
+        GameScene::CheckForCollision();
 
         GameScene::Render();
     }
