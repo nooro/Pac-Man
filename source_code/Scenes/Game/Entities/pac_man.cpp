@@ -46,9 +46,6 @@ bool PacMan::IsWalking() { return PacMan::is_walking; }
 void PacMan::Update()
 {
     PacMan::Move();
-
-    PacMan::walk_animation.rect.x = PacMan::rect.x;
-    PacMan::walk_animation.rect.y = PacMan::rect.y;
 }
 
 void PacMan::Move()
@@ -66,6 +63,9 @@ void PacMan::Move()
 
         else if( PacMan::walk_direction == PacMan::Direction::Down )
             { PacMan::rect.y += PacMan::movement_speed; }
+
+        PacMan::walk_animation.rect.x = PacMan::rect.x;
+        PacMan::walk_animation.rect.y = PacMan::rect.y;
     }
 }
 
