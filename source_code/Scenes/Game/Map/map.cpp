@@ -23,7 +23,7 @@ bool Map::Load(string file_path)
 
     char current_element;
     SDL_Rect current_wall_rect;
-    current_wall_rect.h = GamePanel::GetHeight() / 30;
+    current_wall_rect.h = GamePanel::GetHeight() / 31;
     current_wall_rect.w = current_wall_rect.h;
     current_wall_rect.x = 0;
     current_wall_rect.y = 0;
