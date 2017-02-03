@@ -93,7 +93,7 @@ bool collide_on_down_walking()
 
 bool GameScene::CheckForCollisionWithBonusPoint()
 {
-    if( PacMan::walk_direction == PacMan::Direction::Right )
+    if( PacMan::walk_direction == General::Direction::Right )
     {
         if( collide_on_right_walking() )
         {
@@ -101,7 +101,7 @@ bool GameScene::CheckForCollisionWithBonusPoint()
             return true;
         }
     }
-    else if( PacMan::walk_direction == PacMan::Direction::Left )
+    else if( PacMan::walk_direction == General::Direction::Left )
     {
         if( collide_on_left_walking() )
         {
@@ -109,7 +109,7 @@ bool GameScene::CheckForCollisionWithBonusPoint()
             return true;
         }
     }
-    else if( PacMan::walk_direction == PacMan::Direction::Up )
+    else if( PacMan::walk_direction == General::Direction::Up )
     {
         if( collide_on_up_walking() )
         {
@@ -117,7 +117,7 @@ bool GameScene::CheckForCollisionWithBonusPoint()
             return true;
         }
     }
-    else if( PacMan::walk_direction == PacMan::Direction::Down )
+    else if( PacMan::walk_direction == General::Direction::Down )
     {
         if( collide_on_down_walking() )
         {

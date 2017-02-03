@@ -3,17 +3,12 @@
 bool GameScene::is_active;
 
 Map GameScene::current_map;
-Ghost ghost;
+
 bool GameScene::Init()
 {
     GamePanel::Init();
 
     if( !PacMan::Init(GamePanel::GetHeight() / 40, GamePanel::GetHeight() / 40))
-    {
-        return false;
-    }
-
-    if( !ghost.Init(GamePanel::GetHeight() / 40, GamePanel::GetHeight() / 40))
     {
         return false;
     }
@@ -26,7 +21,7 @@ bool GameScene::Init()
 void GameScene::Play()
 {
     GameScene::is_active = GameScene::current_map.Load("Resources/Maps/test.map");
-    PacMan::ChangeWalkDirection(PacMan::Direction::Left);
+    PacMan::ChangeWalkDirection(General::Direction::Left);
 
     while( GameScene::is_active )
     {
@@ -49,7 +44,7 @@ void GameScene::Render()
 }
 
 const Uint8 *input = SDL_GetKeyboardState(NULL);
-PacMan::Direction previous_direction;
+General::Direction previous_direction;
 void GameScene::GetPlayerInput()
 {
     SDL_PumpEvents();
@@ -57,8 +52,8 @@ void GameScene::GetPlayerInput()
 
     if( input[SDL_SCANCODE_LEFT] )
     {
-        PacMan::ChangeWalkDirection( PacMan::Direction::Left );
-        if(previous_direction == PacMan::Direction::Up || previous_direction == PacMan::Direction::Down)
+        PacMan::ChangeWalkDirection( General::Direction::Left );
+        if(previous_direction == General::Direction::Up || previous_direction == General::Direction::Down)
         {
             if(CheckForCollisionWithWall())
             {
@@ -69,8 +64,8 @@ void GameScene::GetPlayerInput()
 
     if( input[SDL_SCANCODE_RIGHT] )
     {
-        PacMan::ChangeWalkDirection( PacMan::Direction::Right );
-        if(previous_direction == PacMan::Direction::Up || previous_direction == PacMan::Direction::Down)
+        PacMan::ChangeWalkDirection( General::Direction::Right );
+        if(previous_direction == General::Direction::Up || previous_direction == General::Direction::Down)
         {
             if(CheckForCollisionWithWall())
             {
@@ -81,8 +76,8 @@ void GameScene::GetPlayerInput()
 
     if( input[SDL_SCANCODE_UP] )
     {
-        PacMan::ChangeWalkDirection( PacMan::Direction::Up );
-        if(previous_direction == PacMan::Direction::Left || previous_direction == PacMan::Direction::Right)
+        PacMan::ChangeWalkDirection( General::Direction::Up );
+        if(previous_direction == General::Direction::Left || previous_direction == General::Direction::Right)
         {
             if(CheckForCollisionWithWall())
             {
@@ -93,8 +88,8 @@ void GameScene::GetPlayerInput()
 
     if( input[SDL_SCANCODE_DOWN] )
     {
-        PacMan::ChangeWalkDirection( PacMan::Direction::Down );
-        if(previous_direction == PacMan::Direction::Left || previous_direction == PacMan::Direction::Right)
+        PacMan::ChangeWalkDirection( General::Direction::Down );
+        if(previous_direction == General::Direction::Left || previous_direction == General::Direction::Right)
         {
             if(CheckForCollisionWithWall())
             {

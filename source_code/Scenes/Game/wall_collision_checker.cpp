@@ -170,7 +170,7 @@ bool GameScene::CheckForCollisionWithWall()
 {
     PacMan::StartWalking();
 
-    if( PacMan::walk_direction == PacMan::Direction::Right )
+    if( PacMan::walk_direction == General::Direction::Right )
     {
         if( is_collide_when_right_walking() )
         {
@@ -178,7 +178,7 @@ bool GameScene::CheckForCollisionWithWall()
             return true;
         }
     }
-    else if( PacMan::walk_direction == PacMan::Direction::Left )
+    else if( PacMan::walk_direction == General::Direction::Left )
     {
         if( is_collide_when_left_walking() )
         {
@@ -186,7 +186,7 @@ bool GameScene::CheckForCollisionWithWall()
             return true;
         }
     }
-    else if( PacMan::walk_direction == PacMan::Direction::Up )
+    else if( PacMan::walk_direction == General::Direction::Up )
     {
         if( is_collide_when_up_walking() )
         {
@@ -194,7 +194,7 @@ bool GameScene::CheckForCollisionWithWall()
             return true;
         }
     }
-    else if( PacMan::walk_direction == PacMan::Direction::Down )
+    else if( PacMan::walk_direction == General::Direction::Down )
     {
         if( is_collide_when_down_walking() )
         {
