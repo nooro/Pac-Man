@@ -18,7 +18,7 @@ bool Ghost::Init(int hight, int width)
     this->walk_animation.rect = this->rect;
     this->idle_image.rect = this->rect;
 
-    this->walk_direction = Direction::Right;
+    this->walk_direction = General::Direction::Right;
 
     return true;
 }
@@ -26,26 +26,26 @@ bool Ghost::Init(int hight, int width)
 void Ghost::Update()
 {
     this->Move();
-
-    this->walk_animation.rect.x = this->rect.x;
-    this->walk_animation.rect.y = this->rect.y;
 }
 
 void Ghost::Move()
 {
     if( this->is_walking )
     {
-        if( this->walk_direction == this->Direction::Right )
+        if( this->walk_direction == General::Direction::Right )
             { this->rect.x += this->movement_speed; }
 
-        else if( this->walk_direction == this->Direction::Left )
+        else if( this->walk_direction == General::Direction::Left )
             { this->rect.x -= this->movement_speed; }
 
-        else if( this->walk_direction == this->Direction::Up )
+        else if( this->walk_direction == General::Direction::Up )
             { this->rect.y -= this->movement_speed; }
 
-        else if( this->walk_direction == this->Direction::Down )
+        else if( this->walk_direction == General::Direction::Down )
             { this->rect.y += this->movement_speed; }
+
+        this->walk_animation.rect.x = this->rect.x;
+        this->walk_animation.rect.y = this->rect.y;
     }
 }
 

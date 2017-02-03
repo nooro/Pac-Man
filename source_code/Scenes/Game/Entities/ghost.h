@@ -12,8 +12,8 @@ class Ghost
 
         void Update();
 
-        enum Direction { Right, Left, Up = 90, Down = 270 };
-        Direction walk_direction;
+
+        General::Direction walk_direction;
 
         void Die();
 

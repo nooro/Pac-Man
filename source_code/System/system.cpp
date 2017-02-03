@@ -32,6 +32,12 @@ bool System::InitSDL()
         return false;
     }
 
+    if(TTF_Init() != 0)
+    {
+        Error::New(Error::Type::TTF, "Can not initialize SDL_ttf");
+        return false;
+    }
+
     return true;
 }
 

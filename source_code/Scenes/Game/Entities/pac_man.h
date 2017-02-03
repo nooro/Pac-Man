@@ -12,9 +12,8 @@ class PacMan
 
         static void Update();
 
-        enum Direction { Right, Left, Up = 90, Down = 270 };
-        static Direction walk_direction;
-        static void ChangeWalkDirection(PacMan::Direction direction);
+        static General::Direction walk_direction;
+        static void ChangeWalkDirection(General::Direction direction);
 
         static bool IsWalking();
         static bool IsAlive();

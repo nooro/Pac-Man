@@ -3,6 +3,7 @@
 
 #include <SDL.h>
 #include <SDL_image.h>
+#include <SDL_ttf.h>
 #include <string>
 
 class Error
@@ -12,6 +13,7 @@ class Error
         {
             SDL,
             IMG,
+            TTF,
             Custom
         };
 

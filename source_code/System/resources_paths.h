@@ -10,4 +10,7 @@
 
 #define GHOST_IDLE_IMAGE        "Resources/Images/ghost.png"
 #define GHOST_WALK_ANIMATION    "Resources/Animations/Ghost/walk.anim"
+
+#define FONT_INVADERS           "Resources/Fonts/invaders.ttf"
+
 #endif // RESOURCES_PATHS_H_INCLUDED

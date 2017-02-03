@@ -10,7 +10,7 @@ int PacMan::lives;
 int PacMan::movement_speed;
 
 SDL_Rect PacMan::rect;
-PacMan::Direction PacMan::walk_direction;
+General::Direction PacMan::walk_direction;
 
 bool PacMan::Init(int hight, int width)
 {
@@ -35,7 +35,7 @@ bool PacMan::Init(int hight, int width)
     PacMan::walk_animation.rect = PacMan::rect;
     PacMan::idle_image.rect = PacMan::rect;
 
-    PacMan::walk_direction = Direction::Right;
+    PacMan::walk_direction = General::Direction::Right;
 
     return true;
 }
@@ -52,16 +52,16 @@ void PacMan::Move()
 {
     if( PacMan::is_walking )
     {
-        if( PacMan::walk_direction == PacMan::Direction::Right )
+        if( PacMan::walk_direction == General::Direction::Right )
             { PacMan::rect.x += PacMan::movement_speed; }
 
-        else if( PacMan::walk_direction == PacMan::Direction::Left )
+        else if( PacMan::walk_direction == General::Direction::Left )
             { PacMan::rect.x -= PacMan::movement_speed; }
 
-        else if( PacMan::walk_direction == PacMan::Direction::Up )
+        else if( PacMan::walk_direction == General::Direction::Up )
             { PacMan::rect.y -= PacMan::movement_speed; }
 
-        else if( PacMan::walk_direction == PacMan::Direction::Down )
+        else if( PacMan::walk_direction == General::Direction::Down )
             { PacMan::rect.y += PacMan::movement_speed; }
 
         PacMan::walk_animation.rect.x = PacMan::rect.x;
@@ -97,7 +97,7 @@ void PacMan::StartWalking()
     PacMan::walk_animation.rect.y = PacMan::rect.y;
 }
 
-void PacMan::ChangeWalkDirection( Direction direction )
+void PacMan::ChangeWalkDirection( General::Direction direction )
 {
     if( PacMan::walk_direction != direction )
     {

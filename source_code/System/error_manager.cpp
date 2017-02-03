@@ -14,13 +14,21 @@ void Error::New(Error::Type type, std::string message)
         message += "\n  -" + (std::string)IMG_GetError();
     }
 
-    const SDL_MessageBoxData message_box_data = { SDL_MESSAGEBOX_ERROR,
-                                                  NULL,
-                                                  "Error",
-                                                  message.c_str(),
-                                                  SDL_arraysize(buttons),
-                                                  buttons,
-                                                  NULL };
+    else if( type == Error::Type::TTF )
+    {
+        message += "\n  -" + (std::string)TTF_GetError();
+    }
+
+    const SDL_MessageBoxData message_box_data =
+    {
+        SDL_MESSAGEBOX_ERROR,
+        NULL,
+        "Error",
+        message.c_str(),
+        SDL_arraysize(buttons),
+        buttons,
+        NULL
+    };
 
     SDL_ShowMessageBox(&message_box_data, NULL);
 }
