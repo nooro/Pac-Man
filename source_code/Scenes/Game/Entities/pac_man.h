@@ -35,6 +35,8 @@ class PacMan
         static void SetMovementSpeed(int speed);
         static int GetMovementSpeed();
 
+        static int GetLives();
+
     private:
         static void Move();
 

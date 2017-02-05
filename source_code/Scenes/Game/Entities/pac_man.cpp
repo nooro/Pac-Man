@@ -79,6 +79,8 @@ void PacMan::Die()
 
     PacMan::die_animation.Reset();
     PacMan::die_animation.Rotate( PacMan::walk_direction );
+
+    PacMan::lives--;
 }
 
 void PacMan::StopWalking()
@@ -144,4 +146,9 @@ void PacMan::SetMovementSpeed(int speed)
 int PacMan::GetMovementSpeed()
 {
     return PacMan::movement_speed;
+}
+
+int PacMan::GetLives()
+{
+    return PacMan::lives;
 }
