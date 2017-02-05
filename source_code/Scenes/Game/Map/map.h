@@ -24,6 +24,8 @@ class Map
     public:
         bool Load(string file_path);
         void Render();
+
+        void SetWallColor(SDL_Color color);
 };
 
 #endif // MAP_H_INCLUDED

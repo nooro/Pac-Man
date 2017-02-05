@@ -6,10 +6,10 @@ bool Map::Load(string file_path)
     WallsManager::SetColor( General::Colors[General::RandomNumber(0, 4)] );
 
     PointsManager::Clear();
-    PointsManager::SetColor( General::Colors[5] );
+    PointsManager::SetColor( WHITE );
 
     BonusPointsManager::Clear();
-    BonusPointsManager::SetColor( General::Colors[6] );
+    BonusPointsManager::SetColor( PINK );
 
     ifstream file;
     file.open(file_path);
@@ -97,4 +97,9 @@ void Map::Render()
     WallsManager::Render();
     PointsManager::Render();
     BonusPointsManager::Render();
+}
+
+void Map::SetWallColor(SDL_Color color)
+{
+    WallsManager::SetColor(color);
 }

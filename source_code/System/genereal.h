@@ -6,6 +6,14 @@
 #include <iostream>
 #include <time.h>
 
+#define BLUE General::Colors[0]
+#define GREEN General::Colors[1]
+#define ORANGE General::Colors[2]
+#define PURPLE General::Colors[3]
+#define RED General::Colors[4]
+#define WHITE General::Colors[5]
+#define PINK General::Colors[6]
+
 class General
 {
     public:

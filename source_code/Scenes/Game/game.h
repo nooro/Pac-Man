@@ -28,6 +28,12 @@ class GameScene
         static bool is_active;
 
         static Map current_map;
+
+        static TTF_Font *stats_font;
+
+        static int score;
+        static Text score_text;
+        static Text lives_text;
 };
 
 #endif // GAME_H_INCLUDED
