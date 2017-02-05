@@ -1,12 +1,19 @@
 #include "text.h"
 
-Text::Text(string text, TTF_Font *font, SDL_Color color)
+Text::Text()
+{
+    this->text = "";
+    this->color = {255, 0, 0, 0};
+    this->font = NULL;
+}
+
+bool Text::Create(string text, TTF_Font *font, SDL_Color color)
 {
     this->text = text;
     this->color = color;
     this->font = font;
 
-    this->Init();
+    return this->Init();
 }
 
 void Text::SetText(string text)
