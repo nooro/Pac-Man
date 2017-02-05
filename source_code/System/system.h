@@ -6,6 +6,7 @@
 #include <SDL_ttf.h>
 
 #include <iostream>
+#include <string>
 using namespace std;
 
 #include "genereal.h"
