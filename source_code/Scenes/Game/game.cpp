@@ -150,6 +150,7 @@ void GameScene::CheckForCollision()
     }
     else
     {
+        SoundManager::Play(SoundManager::Sounds::GetCoin);
         GameScene::score += 10;
         GameScene::score_text.SetText("Score: " + to_string(GameScene::score));
     }
