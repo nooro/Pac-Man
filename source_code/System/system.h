@@ -4,15 +4,17 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_ttf.h>
+#include <SDL_mixer.h>
 
 #include <iostream>
 #include <string>
 using namespace std;
 
 #include "genereal.h"
+#include "resources_paths.h"
 
 #include "error_manager.h"
-#include "resources_paths.h"
+#include "sound_manager.h"
 
 class System
 {

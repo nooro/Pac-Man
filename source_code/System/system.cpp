@@ -4,7 +4,7 @@ SDL_Renderer *System::Renderer = NULL;
 
 bool System::Init()
 {
-    return System::InitSDL() & System::Window::Init() & System::CreateTheRenderer();
+    return System::InitSDL() & System::Window::Init() & System::CreateTheRenderer() & SoundManager::Init();
 }
 
 void System::Free()
@@ -38,6 +38,11 @@ bool System::InitSDL()
         return false;
     }
 
+    if(Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 ) < 0)
+    {
+        Error::New(Error::Type::MIX, "Can not initialize SDL_mixer");
+        return false;
+    }
     return true;
 }
 
