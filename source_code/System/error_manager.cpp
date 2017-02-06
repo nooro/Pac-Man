@@ -19,6 +19,11 @@ void Error::New(Error::Type type, std::string message)
         message += "\n  -" + (std::string)TTF_GetError();
     }
 
+    else if( type == Error::Type::MIX )
+    {
+        message += "\n  -" + (std::string)Mix_GetError();
+    }
+
     const SDL_MessageBoxData message_box_data =
     {
         SDL_MESSAGEBOX_ERROR,

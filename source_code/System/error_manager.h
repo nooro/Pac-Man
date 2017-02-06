@@ -4,6 +4,7 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_ttf.h>
+#include <SDL_mixer.h>
 #include <string>
 
 class Error
@@ -14,6 +15,7 @@ class Error
             SDL,
             IMG,
             TTF,
+            MIX,
             Custom
         };
 
