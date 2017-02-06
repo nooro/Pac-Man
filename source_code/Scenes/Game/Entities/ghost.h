@@ -12,7 +12,6 @@ class Ghost
 
         void Update();
 
-
         General::Direction walk_direction;
 
         void Die();
@@ -27,8 +26,10 @@ class Ghost
 
     private:
         void Move();
+        void ChangeColor(SDL_Color color);
 
         SDL_Rect rect;
+        SDL_Color color;
 
         bool is_alive, is_walking;
         int movement_speed;

@@ -18,6 +18,8 @@ bool Ghost::Init(int hight, int width)
     this->walk_animation.rect = this->rect;
     this->idle_image.rect = this->rect;
 
+    this->color = {255, 0, 0, 255};
+
     this->walk_direction = General::Direction::Right;
 
     return true;
@@ -79,4 +81,10 @@ void Ghost::SetMovementSpeed(int speed)
 int Ghost::GetMovementSpeed()
 {
     return this->movement_speed;
+}
+
+void Ghost::ChangeColor(SDL_Color color)
+{
+    SDL_SetTextureColorMod(this->idle_image.texture, color.r, color.g, color.b);
+    SDL_SetTextureColorMod(this->walk_animation.texture, color.r, color.g, color.b);
 }
