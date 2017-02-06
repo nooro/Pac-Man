@@ -12,7 +12,10 @@ void WallsManager::Add(SDL_Rect rect)
 
 void WallsManager::SetColor(SDL_Color color)
 {
-    WallsManager::texture = CreateTexture(WALL_IMAGE);
+    if(WallsManager::texture == NULL)
+    {
+        WallsManager::texture = CreateTexture(WALL_IMAGE);
+    }
     SDL_SetTextureColorMod(WallsManager::texture, color.r, color.g, color.b);
 }
 
