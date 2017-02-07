@@ -22,7 +22,7 @@ bool GameScene::Init()
     GameScene::is_active = false;
 
     GameScene::stats_font = NULL;
-    GameScene::stats_font = TTF_OpenFont(FONT_ITC, 28);
+    GameScene::stats_font = TTF_OpenFont(FONT_BOING, 38);
     if(GameScene::stats_font == NULL)
     {
         Error::New(Error::Type::TTF, "Can not load game statistics font");
