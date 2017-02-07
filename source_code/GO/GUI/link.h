@@ -3,17 +3,16 @@
 
 #include "text.h"
 
-class Link : Text
+class Link : public Text
 {
     public:
         Link();
         bool IsHovered();
-        bool IsClicked();
+        bool IsClicked(SDL_Event &event);
 
     private:
         int mouse_x, mouse_y;
         bool click;
-        SDL_Event event;
 };
 
 #endif // LINK_H_INCLUDED

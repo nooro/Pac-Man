@@ -17,7 +17,7 @@ class Text : public GO_Base
         void SetFont(string path);
 
     private:
-        bool Create();
+        bool Init();
         TTF_Font *font;
         SDL_Color color;
         string text;

@@ -13,26 +13,26 @@ bool Text::Create(string text, TTF_Font *font, SDL_Color color)
     this->color = color;
     this->font = font;
 
-    return this->Create();
+    return this->Init();
 }
 
 void Text::SetText(string text)
 {
     this->text = text;
-    this->Create();
+    this->Init();
 }
 
 void Text::SetColor(SDL_Color color)
 {
     this->color = color;
-    this->Create();
+    this->Init();
 }
 void Text::SetColor(int r, int g, int b)
 {
     this->color.r = r;
     this->color.g = g;
     this->color.b = b;
-    this->Create();
+    this->Init();
 }
 
 void Text::SetFont(TTF_Font *font) { this->font = font; }
@@ -44,10 +44,10 @@ void Text::SetFont(string path)
     {
         Error::New(Error::Type::TTF, "Could not set text font");
     }
-    this->Create();
+    this->Init();
 }
 
-bool Text::Create()
+bool Text::Init()
 {
     SDL_Surface *textSurface = NULL;
     textSurface = TTF_RenderText_Solid(this->font, this->text.c_str(), this->color);

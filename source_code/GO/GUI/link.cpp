@@ -6,12 +6,12 @@ Link::Link()
     this->click = false;
 }
 
-bool Link::IsClicked()
+bool Link::IsClicked(SDL_Event &event)
 {
     this->click = false;
-    if( this->event.type == SDL_MOUSEBUTTONUP )
+    if( event.type == SDL_MOUSEBUTTONUP )
     {
-        if( this->event.button.button == SDL_BUTTON_LEFT )
+        if( event.button.button == SDL_BUTTON_LEFT )
         {
             if( this->click == false )
             {
