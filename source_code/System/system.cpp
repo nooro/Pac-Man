@@ -4,7 +4,7 @@ SDL_Renderer *System::Renderer = NULL;
 
 bool System::Init()
 {
-    return System::InitSDL() & System::Window::Init() & System::CreateTheRenderer() & SoundManager::Init();
+    return System::InitSDL() & System::Window::Init() & System::CreateTheRenderer();
 }
 
 void System::Free()
