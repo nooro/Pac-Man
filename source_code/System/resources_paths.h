@@ -17,7 +17,7 @@
 #define GHOST_WALK_ANIMATION    "Resources/Animations/Ghost/walk.anim"
 
 //Fonts
-#define FONT_ITC                "Resources/Fonts/itc.ttf"
+#define FONT_BOING              "Resources/Fonts/boing.ttf"
 
 //Sounds
 #define SOUND_GET_COIN          "Resources/Sounds/get_coin.wav"
