@@ -18,13 +18,12 @@ class MainMenu
         static void Render();
 
         static SDL_Event event;
-        static void CheckForEvents();
+        static bool CheckForEvents();
 
         static Image logo_image;
 
         static TTF_Font *options_font;
-        static Link play_option;
-        static Link quit_option;
+        static Link options[];
         static int selected_option;
 };
 

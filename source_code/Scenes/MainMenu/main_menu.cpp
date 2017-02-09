@@ -4,8 +4,10 @@ bool MainMenu::is_active;
 Image MainMenu::logo_image;
 
 TTF_Font *MainMenu::options_font;
-Link MainMenu::play_option;
-Link MainMenu::quit_option;
+#define OPTIONS 2
+#define PLAY 0
+#define QUIT 1
+Link MainMenu::options[OPTIONS];
 int MainMenu::selected_option;
 
 bool MainMenu::Init()
@@ -24,23 +26,23 @@ bool MainMenu::Init()
         return false;
     }
 
-    if ( !MainMenu::play_option.Create("Play", MainMenu::options_font, WHITE) )
+    if ( !MainMenu::options[PLAY].Create("Play", MainMenu::options_font, WHITE) )
     {
         Error::New(Error::Type::TTF, "Could not create the play option text from the main menu");
         return false;
     }
-    MainMenu::play_option.SetX( (System::Window::GetWidth() / 2) - (MainMenu::play_option.GetWidth() / 2) );
-    MainMenu::play_option.SetY( MainMenu::logo_image.GetY() + MainMenu::logo_image.GetHeight() + ( System::Window::GetHeight() / 5 ) );
+    MainMenu::options[PLAY].SetX( (System::Window::GetWidth() / 2) - (MainMenu::options[PLAY].GetWidth() / 2) );
+    MainMenu::options[PLAY].SetY( MainMenu::logo_image.GetY() + MainMenu::logo_image.GetHeight() + ( System::Window::GetHeight() / 5 ) );
 
-    if ( !MainMenu::quit_option.Create("Quit", MainMenu::options_font, WHITE) )
+    if ( !MainMenu::options[QUIT].Create("Quit", MainMenu::options_font, WHITE) )
     {
         Error::New(Error::Type::TTF, "Could not create the quit option text from the main menu");
         return false;
     }
-    MainMenu::quit_option.SetX( (System::Window::GetWidth() / 2) - (MainMenu::quit_option.GetWidth() / 2) );
-    MainMenu::quit_option.SetY( MainMenu::play_option.GetY() + MainMenu::play_option.GetHeight() + 20 );
+    MainMenu::options[QUIT].SetX( (System::Window::GetWidth() / 2) - (MainMenu::options[QUIT].GetWidth() / 2) );
+    MainMenu::options[QUIT].SetY( MainMenu::options[PLAY].GetY() + MainMenu::options[PLAY].GetHeight() + 20 );
 
-    MainMenu::selected_option = 0;
+    MainMenu::selected_option = PLAY;
 
     MainMenu::is_active = false;
 
@@ -50,102 +52,110 @@ bool MainMenu::Init()
 void MainMenu::Free()
 {
     delete(&MainMenu::logo_image);
-    delete(&MainMenu::play_option);
-    delete(&MainMenu::quit_option);
+    delete(&MainMenu::options);
     TTF_CloseFont(MainMenu::options_font);
 }
 
 void MainMenu::Play()
 {
     MainMenu::is_active = true;
+    MainMenu::options[MainMenu::selected_option].SetColor(RED);
 
     while( MainMenu::is_active )
     {
-        MainMenu::CheckForEvents();
+        if( MainMenu::CheckForEvents() )
+        {
+            for(int i = 0; i < OPTIONS; i++)
+            {
+                if( MainMenu::selected_option == i )
+                {
+                    MainMenu::options[i].SetColor(RED);
+                }
+                else
+                {
+                    MainMenu::options[i].SetColor(WHITE);
+                }
+            }
+        }
+
         MainMenu::Render();
     }
 }
 
 SDL_Event MainMenu::event;
-void MainMenu::CheckForEvents()
+bool MainMenu::CheckForEvents()
 {
     if(SDL_PollEvent(&MainMenu::event))
     {
-        if(MainMenu::event.type == SDL_QUIT)
-        {
-            MainMenu::is_active = false;
-        }
-
         if( MainMenu::event.type == SDL_KEYDOWN )
         {
             if( MainMenu::event.key.keysym.sym == SDLK_DOWN )
             {
-                if( selected_option < 1 )
+                if( MainMenu::selected_option < OPTIONS - 1)
                 {
-                    selected_option++;
+                    MainMenu::selected_option++;
                 }
                 else
                 {
-                    selected_option = 0;
+                    MainMenu::selected_option = 0;
                 }
+                return true;
             }
             else if( MainMenu::event.key.keysym.sym == SDLK_UP )
             {
-                if( selected_option > 0 )
+                if( MainMenu::selected_option > 0 )
                 {
-                    selected_option--;
+                    MainMenu::selected_option--;
                 }
                 else
                 {
-                    selected_option = 1;
+                    MainMenu::selected_option = OPTIONS - 1;
                 }
+                return true;
             }
-
-            if( selected_option == 0 )
+            else if( MainMenu::event.key.keysym.sym == SDLK_RETURN || MainMenu::event.key.keysym.sym == SDLK_RETURN2 )
             {
-                MainMenu::play_option.SetColor(RED);
-                MainMenu::quit_option.SetColor(WHITE);
+                if( MainMenu::selected_option == PLAY )
+                {
+                    GameScene::Play();
+                }
+                else if( MainMenu::selected_option == QUIT )
+                {
+                    MainMenu::is_active = false;
+                }
+                return true;
             }
-
-            else if( selected_option == 1 )
-            {
-                MainMenu::quit_option.SetColor(RED);
-                MainMenu::play_option.SetColor(WHITE);
-            }
         }
 
-        //Hover play button
-        if(MainMenu::play_option.IsHovered())
-        {
-            MainMenu::play_option.SetColor(RED);
-        }
-        else
-        {
-            MainMenu::play_option.SetColor(WHITE);
-        }
-
-        //Hover quit button
-        if(MainMenu::quit_option.IsHovered())
-        {
-            MainMenu::quit_option.SetColor(RED);
-        }
-        else
-        {
-            MainMenu::quit_option.SetColor(WHITE);
-        }
-
-        //Click on play button
-        if(MainMenu::play_option.IsClicked(MainMenu::event))
+        if( MainMenu::options[PLAY].IsClicked(MainMenu::event) )
         {
             GameScene::Play();
+            return true;
         }
-
-        //Click on quit button
-        if(MainMenu::quit_option.IsClicked(MainMenu::event))
+        else if( MainMenu::options[QUIT].IsClicked(MainMenu::event) )
         {
             MainMenu::is_active = false;
+            return true;
+        }
+
+        if( MainMenu::options[PLAY].IsHovered() )
+        {
+            MainMenu::selected_option = PLAY;
+            return true;
+        }
+        else if( MainMenu::options[QUIT].IsHovered() )
+        {
+            MainMenu::selected_option = QUIT;
+            return true;
+        }
+
+        if(MainMenu::event.type == SDL_QUIT)
+        {
+            MainMenu::is_active = false;
+            return true;
         }
     }
+    return false;
 }
 
 void MainMenu::Render()
@@ -153,8 +163,9 @@ void MainMenu::Render()
     System::Window::Clear();
 
     MainMenu::logo_image.Render();
-    MainMenu::play_option.Render();
-    MainMenu::quit_option.Render();
+
+    MainMenu::options[PLAY].Render();
+    MainMenu::options[QUIT].Render();
 
     System::Window::Update();
 }
