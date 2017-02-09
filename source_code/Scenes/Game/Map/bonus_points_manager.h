@@ -19,6 +19,7 @@ class BonusPointsManager
         static SDL_Rect Get(int index);
         static int NumberOfPoints();
 
+        static void Free();
     private:
         static SDL_Texture *texture;
         static vector<SDL_Rect> points;

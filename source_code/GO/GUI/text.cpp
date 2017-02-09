@@ -7,6 +7,12 @@ Text::Text()
     this->font = NULL;
 }
 
+Text::~Text()
+{
+    delete(&this->color);
+    delete(&this->text);
+}
+
 bool Text::Create(string text, TTF_Font *font, SDL_Color color)
 {
     this->text = text;
@@ -24,8 +30,11 @@ void Text::SetText(string text)
 
 void Text::SetColor(SDL_Color color)
 {
-    this->color = color;
-    this->Init();
+    if(this->color.r != color.r && this->color.g != color.g && this->color.b != color.b)
+    {
+        this->color = color;
+        this->Init();
+    }
 }
 void Text::SetColor(int r, int g, int b)
 {

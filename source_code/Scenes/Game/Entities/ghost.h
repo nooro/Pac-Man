@@ -8,6 +8,7 @@ class Ghost
 {
     public:
         bool Init(int high, int width);
+        void Free();
         void Render();
 
         void Update();

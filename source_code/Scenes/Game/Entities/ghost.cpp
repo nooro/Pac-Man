@@ -25,6 +25,14 @@ bool Ghost::Init(int hight, int width)
     return true;
 }
 
+void Ghost::Free()
+{
+    delete(&this->rect);
+    delete(&this->color);
+    delete(&this->idle_image);
+    delete(&this->walk_animation);
+}
+
 void Ghost::Update()
 {
     this->Move();

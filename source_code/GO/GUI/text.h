@@ -7,6 +7,7 @@ class Text : public GO_Base
 {
     public:
         Text();
+        ~Text();
         bool Create(string text, TTF_Font *font, SDL_Color color);
         void SetText(string text);
 

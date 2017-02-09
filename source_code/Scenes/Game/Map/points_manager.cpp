@@ -26,6 +26,14 @@ void PointsManager::Clear()
     PointsManager::points.clear();
 }
 
+void PointsManager::Free()
+{
+    SDL_DestroyTexture(PointsManager::texture);
+    PointsManager::Clear();
+    delete(&PointsManager::points);
+    delete(&PointsManager::color);
+}
+
 void PointsManager::Render()
 {
     for(unsigned int i = 0; i < PointsManager::points.size(); i++)

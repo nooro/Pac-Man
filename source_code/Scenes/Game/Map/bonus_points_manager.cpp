@@ -25,6 +25,14 @@ void BonusPointsManager::Clear()
     BonusPointsManager::points.clear();
 }
 
+void BonusPointsManager::Free()
+{
+    SDL_DestroyTexture(BonusPointsManager::texture);
+    BonusPointsManager::Clear();
+    delete(&BonusPointsManager::points);
+    delete(&BonusPointsManager::color);
+}
+
 void BonusPointsManager::Render()
 {
     for(unsigned int i = 0; i < BonusPointsManager::points.size(); i++)

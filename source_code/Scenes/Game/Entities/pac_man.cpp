@@ -40,6 +40,14 @@ bool PacMan::Init(int hight, int width)
     return true;
 }
 
+void PacMan::Free()
+{
+    delete(&PacMan::rect);
+    delete(&PacMan::walk_animation);
+    delete(&PacMan::die_animation);
+    delete(&PacMan::idle_image);
+}
+
 bool PacMan::IsAlive()   { return PacMan::is_alive; }
 bool PacMan::IsWalking() { return PacMan::is_walking; }
 

@@ -92,6 +92,13 @@ bool Map::Load(string file_path)
     return true;
 }
 
+void Map::Free()
+{
+    WallsManager::Free();
+    PointsManager::Free();
+    BonusPointsManager::Free();
+}
+
 void Map::Render()
 {
     WallsManager::Render();

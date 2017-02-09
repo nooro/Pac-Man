@@ -23,6 +23,8 @@ class Map
 {
     public:
         bool Load(string file_path);
+        void Free();
+
         void Render();
 
         void SetWallColor(SDL_Color color);

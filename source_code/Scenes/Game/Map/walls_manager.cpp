@@ -24,6 +24,14 @@ void WallsManager::Clear()
     WallsManager::walls.clear();
 }
 
+void WallsManager::Free()
+{
+    delete(&WallsManager::color);
+    SDL_DestroyTexture(WallsManager::texture);
+    WallsManager::Clear();
+    delete(&WallsManager::walls);
+}
+
 void WallsManager::Render()
 {
     for(unsigned int i = 0; i < WallsManager::walls.size(); i++)

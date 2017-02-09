@@ -8,6 +8,7 @@ class PacMan
 {
     public:
         static bool Init(int high, int width);
+        static void Free();
         static void Render();
 
         static void Update();

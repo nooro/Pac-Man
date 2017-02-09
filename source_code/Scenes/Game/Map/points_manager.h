@@ -16,6 +16,8 @@ class PointsManager
         static void Render();
         static void Clear();
 
+        static void Free();
+
         static SDL_Rect Get(int index);
         static int NumberOfPoints();
 

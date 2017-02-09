@@ -13,6 +13,7 @@ class GameScene
 {
     public:
         static bool Init();
+        static void Free();
         static void Play();
 
     private:

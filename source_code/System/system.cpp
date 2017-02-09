@@ -12,6 +12,8 @@ void System::Free()
     SDL_DestroyRenderer(System::Renderer);
     SDL_DestroyWindow(System::Window);
 
+    Mix_Quit();
+    TTF_Quit();
     IMG_Quit();
     SDL_Quit();
 }

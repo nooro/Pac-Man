@@ -13,5 +13,10 @@ int main(int argc, char ** argv)
 
     MainMenu::Play();
 
+    //Free the used memory
+    MainMenu::Free();
+    GameScene::Free();
+    SoundManager::Free();
+    System::Free();
     return 0;
 }

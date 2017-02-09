@@ -30,8 +30,9 @@ void SoundManager::Play(SoundManager::Sounds sound)
     }
 }
 
-void SoundManager::Close()
+void SoundManager::Free()
 {
     Mix_FreeChunk(SoundManager::get_coin);
+    Mix_CloseAudio();
 }
 

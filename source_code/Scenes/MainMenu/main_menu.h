@@ -9,6 +9,7 @@ class MainMenu
 {
     public:
         static bool Init();
+        static void Free();
         static void Play();
 
     private:
@@ -24,6 +25,7 @@ class MainMenu
         static TTF_Font *options_font;
         static Link play_option;
         static Link quit_option;
+        static int selected_option;
 };
 
 #endif // MAIN_MENU_H_INCLUDED

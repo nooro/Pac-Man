@@ -40,6 +40,16 @@ bool GameScene::Init()
     return true;
 }
 
+void GameScene::Free()
+{
+    delete(&GameScene::score_text);
+    delete(&GameScene::lives_text);
+    TTF_CloseFont(GameScene::stats_font);
+
+    current_map.Free();
+    PacMan::Free();
+}
+
 void GameScene::Play()
 {
     GameScene::is_active = GameScene::current_map.Load("Resources/Maps/test.map");

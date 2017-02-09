@@ -16,7 +16,7 @@ class SoundManager
         };
 
         static bool Init();
-        static void Close();
+        static void Free();
 
         static void Play(SoundManager::Sounds sound);
 
