@@ -2,21 +2,28 @@
 #include "Scenes/MainMenu/main_menu.h"
 #include "Scenes/Game/game.h"
 
-int main(int argc, char ** argv)
+bool InitEverything()
 {
-    if( !System::Init() ) { return -1; }
+    return  System::Init() &&
+            SoundManager::Init() &&
+            MainMenu::Init() &&
+            GameScene::Init();
+}
 
-    if( !SoundManager::Init() ) { return -1; }
-
-    if( !MainMenu::Init() ) { return -1; }
-    if( !GameScene::Init() ) { return -1; }
-
-    MainMenu::Play();
-
-    //Free the used memory
+void FreeUsedMemory()
+{
     MainMenu::Free();
     GameScene::Free();
     SoundManager::Free();
     System::Free();
+}
+
+int main(int argc, char ** argv)
+{
+    if( !InitEverything() ) { return - 1; }
+
+    MainMenu::Play();
+
+    FreeUsedMemory();
     return 0;
 }
