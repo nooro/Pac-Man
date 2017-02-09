@@ -8,6 +8,7 @@
 
 #include "game_panel.h"
 #include "Map/map.h"
+#include "../MainMenu/main_menu.h"
 
 class GameScene
 {
