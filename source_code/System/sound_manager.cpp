@@ -26,7 +26,10 @@ void SoundManager::Play(SoundManager::Sounds sound)
 {
     if( sound == SoundManager::Sounds::GetCoin )
     {
-        Mix_PlayChannel(MIX_DEFAULT_CHANNELS, SoundManager::get_coin, NO_LOOP);
+        if(!Mix_Playing(MIX_DEFAULT_CHANNELS))
+        {
+            Mix_PlayChannel(MIX_DEFAULT_CHANNELS, SoundManager::get_coin, NO_LOOP);
+        }
     }
 }
 
