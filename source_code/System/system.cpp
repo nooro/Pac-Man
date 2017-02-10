@@ -40,7 +40,7 @@ bool System::InitSDL()
         return false;
     }
 
-    if(Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 ) < 0)
+    if(Mix_OpenAudio( 35000, MIX_DEFAULT_FORMAT, 2, 6000 ) < 0)
     {
         Error::New(Error::Type::MIX, "Can not initialize SDL_mixer");
         return false;
