@@ -11,12 +11,14 @@
 #include "walls_manager.h"
 #include "points_manager.h"
 #include "bonus_points_manager.h"
+#include "portal.h"
 
-#define WALL '#'
-#define POINT '*'
+#define WALL        '#'
+#define PORTAL      'O'
+#define POINT       '*'
 #define BONUS_POINT '$'
-#define PACMAN '@'
-#define NEW_LINE '\n'
+#define PACMAN      '@'
+#define NEW_LINE    '\n'
 #define EMPTY_SPACE ' '
 
 class Map

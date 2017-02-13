@@ -3,7 +3,6 @@
 bool Map::Load(string file_path)
 {
     WallsManager::Clear();
-    WallsManager::SetColor( General::Colors[General::RandomNumber(0, 4)] );
 
     PointsManager::Clear();
     PointsManager::SetColor( WHITE );
@@ -40,6 +39,19 @@ bool Map::Load(string file_path)
     current_bonus_point_rect.x = 0;
     current_bonus_point_rect.y = 0;
 
+    SDL_Rect first_portal_entrance;
+    first_portal_entrance.h = current_wall_rect.h;
+    first_portal_entrance.w = current_wall_rect.w;
+    first_portal_entrance.x = 0;
+    first_portal_entrance.y = 0;
+
+    SDL_Rect second_portal_entrance;
+    second_portal_entrance.h = current_wall_rect.h;
+    second_portal_entrance.w = current_wall_rect.w;
+    second_portal_entrance.x = 0;
+    second_portal_entrance.y = 0;
+    int portals = 0;
+
     int line = 0;
     int element = 0;
 
@@ -69,6 +81,25 @@ bool Map::Load(string file_path)
             BonusPointsManager::Add(current_bonus_point_rect);
             element++;
         }
+        else if(current_element == PORTAL)
+        {
+            if(portals == 0)
+            {
+                first_portal_entrance.x = GamePanel::GetX() + element * current_wall_rect.w;
+                first_portal_entrance.y = line * current_wall_rect.h;
+                portals++;
+
+                element++;
+            }
+            else if( portals == 1)
+            {
+                second_portal_entrance.x = GamePanel::GetX() + element * current_wall_rect.w;
+                second_portal_entrance.y = line * current_wall_rect.h;
+                portals++;
+
+                element++;
+            }
+        }
         else if(current_element == EMPTY_SPACE)
         {
             element++;
@@ -87,6 +118,17 @@ bool Map::Load(string file_path)
 
     }
 
+    if( portals == 2 )
+    {
+        if( !Portal::Add(first_portal_entrance, second_portal_entrance) )
+        {
+            Error::New(Error::Type::Custom, "Could not create the portal");
+            return false;
+        }
+    }
+
+    this->SetWallColor( General::Colors[General::RandomNumber(0, 4)] );
+
     file.close();
 
     return true;
@@ -97,6 +139,7 @@ void Map::Free()
     WallsManager::Free();
     PointsManager::Free();
     BonusPointsManager::Free();
+    Portal::Free();
 }
 
 void Map::Render()
@@ -104,9 +147,11 @@ void Map::Render()
     WallsManager::Render();
     PointsManager::Render();
     BonusPointsManager::Render();
+    Portal::Render();
 }
 
 void Map::SetWallColor(SDL_Color color)
 {
     WallsManager::SetColor(color);
+    Portal::SetColor(color);
 }
