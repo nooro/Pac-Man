@@ -100,6 +100,7 @@ bool MainMenu::CheckForEvents()
                 {
                     MainMenu::selected_option = 0;
                 }
+                SoundManager::Play(SoundManager::Sounds::Click);
                 return true;
             }
             else if( MainMenu::event.key.keysym.sym == SDLK_UP )
@@ -112,6 +113,7 @@ bool MainMenu::CheckForEvents()
                 {
                     MainMenu::selected_option = OPTIONS - 1;
                 }
+                SoundManager::Play(SoundManager::Sounds::Click);
                 return true;
             }
             else if( MainMenu::event.key.keysym.sym == SDLK_RETURN || MainMenu::event.key.keysym.sym == SDLK_RETURN2 )
@@ -142,11 +144,13 @@ bool MainMenu::CheckForEvents()
         if( MainMenu::options[PLAY].IsHovered() )
         {
             MainMenu::selected_option = PLAY;
+            SoundManager::Play(SoundManager::Sounds::Click);
             return true;
         }
         else if( MainMenu::options[QUIT].IsHovered() )
         {
             MainMenu::selected_option = QUIT;
+            SoundManager::Play(SoundManager::Sounds::Click);
             return true;
         }
 

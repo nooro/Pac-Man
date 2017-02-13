@@ -4,6 +4,7 @@
 #include "../../System/system.h"
 #include "../Game/game.h"
 #include "../../GO/go.h"
+#include "../../System/sound_manager.h"
 
 class MainMenu
 {
