@@ -12,7 +12,8 @@ class SoundManager
     public:
         enum Sounds
         {
-            GetCoin
+            GetCoin,
+            Click
         };
 
         static bool Init();
@@ -22,6 +23,7 @@ class SoundManager
 
     private:
         static Mix_Chunk *get_coin;
+        static Mix_Chunk *click;
 };
 
 #endif // SOUND_MANAGER_H_INCLUDED
