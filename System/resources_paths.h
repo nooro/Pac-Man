@@ -11,6 +11,7 @@
 //Map images
 #define POINT_IMAGE             "Resources/Images/point.png"
 #define WALL_IMAGE              "Resources/Images/wall.png"
+#define PORTAL_IMAGE            "Resources/Images/portal.png"
 
 //Ghosts images and animations
 #define GHOST_IDLE_IMAGE        "Resources/Images/ghost.png"
@@ -21,6 +22,6 @@
 
 //Sounds
 #define SOUND_GET_COIN          "Resources/Sounds/get_coin.wav"
-#define SOUND_CLICK                   "Resources/Sounds/click.wav"
+#define SOUND_CLICK             "Resources/Sounds/click.wav"
 
 #endif // RESOURCES_PATHS_H_INCLUDED
