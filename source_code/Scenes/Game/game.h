@@ -8,12 +8,13 @@
 
 #include "game_panel.h"
 #include "Map/map.h"
-#include "../MainMenu/main_menu.h"
+#include "../PauseMenu/pause_menu.h"
 
 class GameScene
 {
     public:
         static bool Init();
+        static void Close();
         static void Free();
         static void Play();
 

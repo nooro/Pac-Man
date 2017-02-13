@@ -69,16 +69,19 @@ void GameScene::Play()
 
 void GameScene::Render()
 {
-    System::Window::Clear();
+    if( GameScene::is_active )
+    {
+        System::Window::Clear();
 
-    GameScene::current_map.Render();
+        GameScene::current_map.Render();
 
-    PacMan::Render();
+        PacMan::Render();
 
-    GameScene::score_text.Render();
-    GameScene::lives_text.Render();
+        GameScene::score_text.Render();
+        GameScene::lives_text.Render();
 
-    System::Window::Update();
+        System::Window::Update();
+    }
 }
 
 const Uint8 *input = SDL_GetKeyboardState(NULL);
@@ -137,6 +140,11 @@ void GameScene::GetPlayerInput()
                 }
             }
         }
+
+        if( input[SDL_SCANCODE_ESCAPE] )
+        {
+            PauseMenu::Play();
+        }
     }
 }
 
@@ -164,4 +172,9 @@ void GameScene::CheckForCollision()
         GameScene::score += 10;
         GameScene::score_text.SetText("Score: " + to_string(GameScene::score));
     }
+}
+
+void GameScene::Close()
+{
+    GameScene::is_active = false;
 }
