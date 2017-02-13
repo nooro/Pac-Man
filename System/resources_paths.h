@@ -21,5 +21,6 @@
 
 //Sounds
 #define SOUND_GET_COIN          "Resources/Sounds/get_coin.wav"
+#define SOUND_CLICK                   "Resources/Sounds/click.wav"
 
 #endif // RESOURCES_PATHS_H_INCLUDED
