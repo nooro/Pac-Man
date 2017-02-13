@@ -60,6 +60,7 @@ void MainMenu::Play()
 {
     MainMenu::is_active = true;
     MainMenu::options[MainMenu::selected_option].SetColor(RED);
+    MainMenu::Render();
 
     while( MainMenu::is_active )
     {
@@ -76,9 +77,9 @@ void MainMenu::Play()
                     MainMenu::options[i].SetColor(WHITE);
                 }
             }
-        }
 
-        MainMenu::Render();
+            MainMenu::Render();
+        }
     }
 }
 
@@ -164,8 +165,10 @@ void MainMenu::Render()
 
     MainMenu::logo_image.Render();
 
-    MainMenu::options[PLAY].Render();
-    MainMenu::options[QUIT].Render();
+    for(int i = 0; i < OPTIONS; i++)
+    {
+        MainMenu::options[i].Render();
+    }
 
     System::Window::Update();
 }
