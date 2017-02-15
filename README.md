@@ -4,4 +4,5 @@ My thesis at [TUES/ELSYS](http://www.elsys-bg.org) - Pac-Man cloning written in 
 ##Download
 **OS** | **Download the game** | **Download the source code**
 ------ | --------------------- | ----------------------------
-**_Windows_** | :---:[:arrow_down:](https://github.com/nooro/Pac-Man/releases/download/1.0.2/Pac-Man.zip) | :---: [:arrow_down:](https://github.com/nooro/Pac-Man/archive/1.0.2.zip)
+:---:  | :---:                 | :---:
+**_Windows_** | [:arrow_down:](https://github.com/nooro/Pac-Man/releases/download/1.0.2/Pac-Man.zip) | [:arrow_down:](https://github.com/nooro/Pac-Man/archive/1.0.2.zip)
