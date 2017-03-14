@@ -1,5 +1,5 @@
 # [Pac-Man](https://en.wikipedia.org/wiki/Pac-Man)
-My thesis at [TUES/ELSYS](http://www.elsys-bg.org) - Pac-Man cloning written in C++ and SDL 2.0. :video_game:
+My thesis at [TUES/ELSYS](http://www.elsys-bg.org) - Pac-Man cloning written in C++ and SDL 2.0.
 
 ##Download
 | **OS** | **Download the game** | **Download the source code** |
